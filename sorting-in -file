@@ -1,0 +1,45 @@
+#!/bin/bash
+#####################################################################################################
+#  Author :sarath kumar
+#  Date created : 13 -04-2021
+#  description : read file content and sort using sort method and for loop and write in aanother file
+ 
+#  Date modified: 13 -04-2021
+
+#######################################################################################################
+
+s=~/Desktop/s1
+d=~/Desktop/s4
+
+sort -n $s > $d                # sorting done using sort command
+#########################
+
+declare -a aray               # declare an array
+
+index=0 
+for i in $(cat $s)            #   value store in array
+ do 
+    array[(index++)]=$i
+    #echo ${array[0]}
+	
+done
+
+k1=`cat $s | wc -l`
+n=`expr $k1 - 1`
+n1=`expr $k1 - 2`
+for i in $(seq 0 $n1)
+	do 
+		k=`expr $i + 1`
+		for j in $(seq $k $n)
+		 do 
+			if [ ${array[$i]} -ge ${array[$j]} ] 
+                              then 
+				temp=${array[$j]}
+				array[$j]=${array[$i]}
+				array[$i]=$temp
+			fi
+		done
+               echo ${array[$i]}  > ~/Desktop/s6
+done
+
+echo Values are sorted successfully
