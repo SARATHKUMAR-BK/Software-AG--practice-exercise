@@ -6,3 +6,42 @@
 #  Date modified: 14 -04-2021
 
 #####################################################################################################
+
+echo "enter the new user name"
+read name
+
+grep $name /etc/passwd >& /dev/null
+
+if [ $? -eq 0 ]
+then
+echo user is already exist
+else
+echo "enter the new user description"
+        read des
+echo "do you give user id(y/n)"
+read option
+if [ $option == y ]
+then
+echo "enter the user id"
+read id
+useradd $name -c "$des" -u $id
+fi
+fi
+
+
+#####################################################
+                                                              # This section for Deletion
+echo "enter the  user name for deletion"
+read name
+
+grep $name /etc/passwd >& /dev/null
+
+if [ $? -eq 0 ]
+then
+       deluser --remove-home $name
+else
+    echo user is not exist
+fi
+
+
+##############################################
