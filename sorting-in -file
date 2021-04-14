@@ -8,8 +8,8 @@
 
 #######################################################################################################
 
-s=~/Desktop/s1
-d=~/Desktop/s4
+s=~/Desktop/s1                #  source file
+d=~/Desktop/s4                 # destination file
 
 sort -n $s > $d                # sorting done using sort command
 #########################
@@ -39,7 +39,7 @@ for i in $(seq 0 $n1)
 				array[$i]=$temp
 			fi
 		done
-               echo ${array[$i]}  > ~/Desktop/s6
+               echo ${array[$i]}  > ~/Desktop/s6    # destinatiion file (using for loop)
 done
 
 echo Values are sorted successfully
