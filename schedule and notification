@@ -1,1 +1,21 @@
+#!/bin/bash
+#####################################################################################################
+#  Author :sarath kumar
+#  Date created : 14 -04-2021
+#  description : read file content and sort using sort method and for loop and write in aanother file
+ 
+#  Date modified: 14 -04-2021
 
+#######################################################################################################
+
+echo sarathkumar
+echo bold-of-king
+
+
+#       this script will  autoatically update in "every 2 mins " in     ' ping file '
+
+********************************************************************************************************************************************************************
+
+# This is crontab -e command
+
+*/2* * * * * /home/welcome/Desktop/sarath > ping      # ping file update automatically
