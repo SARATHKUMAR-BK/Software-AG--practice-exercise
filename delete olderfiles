@@ -1,1 +1,19 @@
 
+#!/bin/bash
+#####################################################################################################
+#  Author :sarath kumar
+#  Date created : 14 -04-2021
+#  description : delete older file
+ 
+#  Date modified: 14 -04-2021
+
+#######################################################################################################
+
+find /home/welcome/Desktop -mtime +50 -exec rm {} /;                                             # remove 50 days older files 
+
+find /home/welcome/Desktop -mtime +50 -exec ls -l {} /;  > /home/welcome/Desktop/backup          # backup 50 days older files
+
+tar cvf /home/welcome/Desktop/backuping  /home/welcome/Desktop/backup
+
+gzip /home/welcome/Desktop/backuping                                                              # compressing the backuping file using gzip command
+
