@@ -1,0 +1,18 @@
+#  !/bin/bash
+#####################################################################################################
+#  Author :sarath kumar
+#  Date created : 15 -04-2021
+#  description : create swapfile with size 512MB
+#  Date modified: 15 -04-2021
+
+####################################################################################################
+
+if [ `whoami` == "root" ]
+then
+  fallocate -l 512M /swapfile    # Make a new swap file
+  mkswap /swapfile                #   Mark the new file as swap space
+  swapon /swapfile                #    Enable the swap file
+  swapon -s
+ else
+      echo "you are not root"
+ fi
