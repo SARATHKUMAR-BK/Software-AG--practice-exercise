@@ -1,0 +1,15 @@
+#!/bin/bash
+#####################################################################################################
+#  Author :   sarath kumar
+#  Date created : 15 -04-2021
+#  description :Find the file which contain localhost under the /etc folder and redirect output to /tmp/find.out and redirect error to /tmp/find.err
+ 
+#  Date modified: 15 -04-2021
+
+#######################################################################################################
+
+
+find /etc -name "localhost" 2> /tmp/find.err 1> /tmp/find.out
+
+# 2> for sending standard error to /tmp/find.err 
+ # 1> for sending output if file contain "localhost" as name to /tmp/find.out
