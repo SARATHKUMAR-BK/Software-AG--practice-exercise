@@ -1,0 +1,25 @@
+#  !/bin/bash
+#####################################################################################################
+#  Author :sarath kumar
+#  Date created : 15 -04-2021
+#  description : 11)	Parse a json file and extract value of a field from it
+#  Date modified: 15 -04-2021
+
+#####################################################################################################
+
+
+read  -p "enter file location" loc
+read -p "enter field " f
+ls  $loc &> /dev/null
+if [ $? == 0 ]
+then
+  if [ $(jq .$f $loc) == "null" ]
+  then
+      echo "There is no field like $f "
+  else
+    jq .$f $loc
+  fi
+ 
+else
+   echo this is not directory
+ fi
