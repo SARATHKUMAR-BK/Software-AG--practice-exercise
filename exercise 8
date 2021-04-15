@@ -1,0 +1,11 @@
+if [ whoami == "root" ]
+then 
+        useradd tuser
+        groupadd testgroup
+        usermod -g testgroup tuser
+        usermod -d /home/testuser -m tuser
+   
+      # grep testgroup /etc/group
+else
+  echo "you are not root"
+fi
