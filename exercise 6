@@ -1,0 +1,17 @@
+#!/bin/bash
+#####################################################################################################
+#  Author :   sarath kumar
+#  Date created : 15 -04-2021
+#  description : set open file limit to 10000
+ 
+#  Date modified: 15 -04-2021
+
+#######################################################################################################
+
+if [ `whoami` == "root" ]
+  then
+     sysctl -w fs.file-max=10000
+    else
+      echo "you are not root so you can't  change this permission"
+      
+ fi
