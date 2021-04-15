@@ -8,3 +8,12 @@
 
 #######################################################################################################
 
+ls /home/welcome/Desktop/data/sample.txt &> /dev/null
+
+if [ $? -eq 0 ]
+  then 
+     cp /home/welcome/Desktop/data/sample.txt /tmp/found.txt
+else
+	    echo "sample.txt is not exist"
+fi 
+
