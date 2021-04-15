@@ -1,0 +1,14 @@
+#! /bin/bash
+
+######################################################
+#Author: Sarath kumar
+#Date Created: 14/04/2021
+#Date Modified: 14/04/2021
+# create directory and file
+#################################################
+
+mkdir /home/welcome/Desktop/data
+
+touch  /home/welcome/Desktop/data/sample.txt
+
+echo "This is sample file "  >  /home/welcome/Desktop/data/sample.txt
