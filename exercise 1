@@ -2,9 +2,9 @@
 
 ######################################################
 #Author: Sarath kumar
-#Date Created: 14/04/2021
-#Date Modified: 14/04/2021
-# create directory and file
+#Date Created: 15/04/2021
+#Date Modified: 15/04/2021
+# Description : create directory and file
 #################################################
 
 mkdir /home/welcome/Desktop/data
