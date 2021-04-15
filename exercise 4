@@ -1,0 +1,8 @@
+while true
+do
+  if [ -f  "/home/welcome/Desktop/data/loop1.txt" ]
+	then
+		echo "file created"
+		exit 1
+ fi
+done
