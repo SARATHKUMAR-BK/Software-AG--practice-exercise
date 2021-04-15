@@ -1,3 +1,13 @@
+#  !/bin/bash
+#####################################################################################################
+#  Author :sarath kumar
+#  Date created : 15 -04-2021
+#  description : Create user named tuser with home directroy name /home/testuser and group named testgroup
+#  Date modified: 15 -04-2021
+
+#####################################################################################################
+
+
 if [ whoami == "root" ]
 then 
         useradd tuser
