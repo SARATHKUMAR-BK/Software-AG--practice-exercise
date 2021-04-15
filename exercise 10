@@ -7,3 +7,24 @@
 
 #####################################################################################################
 
+#install apache2 sudo app-get install apache2
+
+
+if [ `whoami` == "root" ]
+then
+
+	 service apache2 stop                                           #stop apache service
+ 
+	sed -i 's/.*Listen.*/Listen 8080' /etc/apache2/ports.conf       #configure port 
+	
+	echo "Welcome to Home Page" > /var/www/html/index.html          #write to index.html (webpage)
+	
+	
+	service apache2 start                                           #start apache service
+else
+echo please login as root
+
+fi
+
+
+
