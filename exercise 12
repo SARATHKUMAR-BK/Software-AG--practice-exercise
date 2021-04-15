@@ -9,3 +9,6 @@
 
 echo "this is child script"
  
+ sleep 200
+ 
+ echo "sleep 200 is over "
