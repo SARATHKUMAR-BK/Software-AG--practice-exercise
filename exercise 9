@@ -1,0 +1,16 @@
+#  !/bin/bash
+#####################################################################################################
+#  Author :sarath kumar
+#  Date created : 15 -04-2021
+#  description :  Update umask value to get 644 permission for files and only for the user "tuser"
+#  Date modified: 15 -04-2021
+
+#####################################################################################################
+
+if [ `whoami` == "tuser" ]
+then
+  umask 664
+else
+  "you are not root"
+ fi
+    
