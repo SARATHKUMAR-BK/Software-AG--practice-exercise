@@ -1,0 +1,17 @@
+#  !/bin/bash
+#####################################################################################################
+#  Author :sarath kumar
+#  Date created : 15 -04-2021
+#  description : parent script
+#  Date modified: 15 -04-2021
+
+#####################################################################################################
+
+echo "This is Parent process"
+ 
+./exercise 12 -child &
+id=$?
+
+wait $id
+
+echo "parent process is over"
