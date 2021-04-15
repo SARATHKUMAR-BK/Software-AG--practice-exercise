@@ -1,0 +1,16 @@
+#! /bin/bash
+#########################################################################
+#Author: sarath kumar
+#Date Modified: 15/04/2021
+#Date created: 15/04/2021
+#Description : soft/symbolic link creation 
+#############################################################################
+
+ls /home/welcome/Desktop/data/sample.txt &> /dev/null
+
+if [ $? -eq 0 ]
+  then 
+    	ln -s  /home/welcome/Desktop/data/sample.txt /tmp/sample.txt
+else
+	echo "sample.txt is not exist"
+fi 
