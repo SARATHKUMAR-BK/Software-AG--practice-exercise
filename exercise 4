@@ -1,3 +1,12 @@
+#!/bin/bash
+#####################################################################################################
+#  Author :   sarath kumar
+#  Date created : 15 -04-2021
+#  description : while loop to check the file loop.txt availability
+ 
+#  Date modified: 15 -04-2021
+
+#######################################################################################################
 while true
 do
   if [ -f  "/home/welcome/Desktop/data/loop1.txt" ]
