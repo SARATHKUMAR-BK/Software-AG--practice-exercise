@@ -12,16 +12,16 @@ then
 
 echo "[Service]
 	WorkingDirectory=~/Desktop
-	ExecStart=~/Desktop/servicescript.bash
+	ExecStart=~/Desktop/exercise-13-script
 	Restart=on-failure
 	
 	[Install]
-	WantedBy=default.target" > /etc/systemd/system/ex13.service
+	WantedBy=default.target" > /etc/systemd/system/exercise-13-script
 
 sudo systemctl daemon-reload
-sudo systemctl enable exercise 13-script
-sudo systemctl start exercise 13-script
-sudo systemctl status exercise 13-script
+sudo systemctl enable exercise-13-script
+sudo systemctl start exercise-13-script
+sudo systemctl status exercise-13-script
 
 
 else
