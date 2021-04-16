@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#######################
+#author:Sarath Kumar
+#date created: 16/04/21
+#description: This script for assigning  
+#date modified: 16/04/21
+#######################
+i=10
+
+while [ $i -lt 10 ]
+
+do
+  echo $i seconds to complete this service
+  
+  sleep 1
+done
