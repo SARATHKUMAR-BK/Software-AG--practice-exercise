@@ -19,9 +19,9 @@ echo "[Service]
 	WantedBy=default.target" > /etc/systemd/system/ex13.service
 
 sudo systemctl daemon-reload
-sudo systemctl enable ex13.service
-sudo systemctl start ex13.service 
-sudo systemctl status ex13.service
+sudo systemctl enable exercise 13-script
+sudo systemctl start exercise 13-script
+sudo systemctl status exercise 13-script
 
 
 else
