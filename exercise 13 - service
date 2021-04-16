@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#######################
+#authorSarath kumar
+#date created: 16/04/21
+#description: This service for running 
+#date modified: 16/04/21
+#######################
+
+if [ `whoami` == "root" ]
+then
+
+echo "[Service]
+	WorkingDirectory=~/Desktop
+	ExecStart=~/Desktop/servicescript.bash
+	Restart=on-failure
+	
+	[Install]
+	WantedBy=default.target" > /etc/systemd/system/ex13.service
+
+sudo systemctl daemon-reload
+sudo systemctl enable ex13.service
+sudo systemctl start ex13.service 
+sudo systemctl status ex13.service
+
+
+else
+       echo "you are not root" 
+	
+fi	
