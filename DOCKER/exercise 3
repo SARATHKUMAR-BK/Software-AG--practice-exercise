@@ -1,4 +1,7 @@
-# 3) Spin up a container with image nginx:1.19.10 such that port 80 of the container can be connected from port 8080 of the host
+#                   3) Spin up a container with image nginx:1.19.10 such that port 80 of the container can be connected from port 8080 of the host
+
+
+#                    compose file is used for create multiple container but here i just try with container in compose file
 
 #--------------------------------docker-compose.yaml---------------------------------USING  .YAML----------------------------------------
 version: '3'
@@ -10,3 +13,15 @@ services:
  #-------------------------------------------OR--------------------------------------USING  DOCKER COMMAND-----------------------------------------------------
  
  docker run -p 8080:80 --name nginx nginx:1.19.10 
+ 
+ 
+ 
+ 
+ 
+ #                  4) Spin up a container with image redis:6.2.2 and mount volume /mnt/redis-data of host to the /data of the container
+ 
+ 
+ docker run -v  /mnt/redis-data:/data -d redis:6.2.2
+ 
+ 
+ #       in host /mnt/redis-data directory is created!
