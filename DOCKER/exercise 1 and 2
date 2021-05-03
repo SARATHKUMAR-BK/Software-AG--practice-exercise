@@ -1,0 +1,10 @@
+#            1) Spin up a temporary container with image nginx:1.19.10 and execute inside it, such that the container should be destroyed, once you exit from the container
+
+
+docker run nginx:1.19.10
+
+
+#           2) Spin up a container with image nginx:1.19.10 such that it should restart automatically if any fatal errors are encountered
+
+
+docker run --restart on-failure nginx:1.19.10
