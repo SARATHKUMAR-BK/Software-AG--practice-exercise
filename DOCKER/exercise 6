@@ -1,0 +1,34 @@
+#                             6) Create a bridge network called test-app and spin up nginx and redis containers in that network
+
+#-------------------------------------------------------------docker-compose.yaml----------------------------------------------------------------------
+
+
+version: '3.8'
+services:
+ my-nginx:
+  image: nginx
+  networks:
+   - my-network
+ my-redis:
+  image: redis
+  networks:
+   - my-network
+networks:
+ my-network:                         # -----------------------------------> DEFAULT NETWORK DRIVER IS ---BRIDGE---- 
+  name: test-app
+  
+#------------------------------------------------docker run command--------------------------------------------------------------------------------------
+
+docker-compose up -d
+
+#-----------------------------------------------------------------------network---------------------------------------------------------------------------
+
+docker network ls
+
+#----------------------------------------------------------------------------currently working conatiner----------------------------------------------------
+docker ps
+
+
+#----------------------------------------------------------------------------to check particular conatiner network type----------------------------------------------------
+docker inspect container-id   -f "{{json .NetworkSettings.Networks }}"
+
