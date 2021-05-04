@@ -1,0 +1,36 @@
+#                                     8) Create a persistent volume redis-pv with below specs:
+#                                               i) hostpath /mnt/redis/data
+#                                               ii) storage size 2Gi
+#                                               iii) access mode - ReadWriteOnce
+
+
+#------------------------------------------------------------------------pvc.yaml-------------------------------------------------------------------------------------------
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/redis/data"
+    
+    
+  #-----------------------------------------------------------------------------create---------------------------------------------------------------------------------------
+  
+  kubectl create -f pvc.yaml
+  
+  #-------------------------------------------------------------------------list the persistent volume---------------------------------------------------------------------
+  
+  kubectl get pv redis-pv
+  
+ ---------------------------------------------------------------->OUTPUT
+ 
+NAME       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM               STORAGECLASS   REASON   AGE
+redis-pv   2Gi        RWO            Retain           Bound    default/redis-pvc   manual                  16m
+
