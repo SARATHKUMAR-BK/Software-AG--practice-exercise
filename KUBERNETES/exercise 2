@@ -1,0 +1,26 @@
+#    2) Expose port 80 of the web-server pod to be reachable within cluster
+
+
+#---------------------------------------------------------------------------------vi pod.yaml-----------------------------------------
+
+apiVersion: v1
+kind: Pod
+metadata:
+ name: web-server
+spec:
+ containers:
+  - name: nginx-container
+    image: nginx:1.19.10
+    ports:
+        - containerPort: 80
+        
+        
+    #---------------------------------------------------------------------------------COMMAND-----------------------------------------
+    
+    
+    kubectl apply -f pod.yaml
+    
+    
+    
+    #---------------------------------------------------------------------------------COMMAND-----------------------------------------
+    kubectl describe pod web-server | grep -i port
