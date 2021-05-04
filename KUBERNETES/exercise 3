@@ -1,0 +1,4 @@
+
+#         3) Create a single pod with below images:
+#                i) nginx:1.19.10
+#                ii) redis:6.2.2
