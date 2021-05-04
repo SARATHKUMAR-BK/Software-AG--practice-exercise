@@ -1,0 +1,43 @@
+#-------------------------------Create a deployment web-deploy with nginx:1.19.10 image of 2 replica---------------------------
+
+#--------------------------------------------------------------deployment.yaml-------------------------------------------------------------------------------------------
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: nginx-deployment
+spec:
+ selector:
+  matchLabels:
+    app: nginx
+ replicas: 2
+ template:
+   metadata:
+     labels:
+      app: nginx
+   spec:
+    containers:
+    - name: nginx-container
+      image: nginx:1.19.10 
+      
+#-------------------------------------------------------------------create-----------------------------------------------------------------------------------------------
+
+kubectl create -f deployment.yaml
+
+#-------------------------------------------------------------------all command-----------------------------------------------------------------------------------------------
+   kubectl get all
+ 
+ 
+ ------------------------------------------------------------------------------------------------------------POD-----------------------------------------------------
+   
+   NAME                                    READY   STATUS              RESTARTS   AGE
+pod/nginx-deployment-7df5bf59c4-44gjl   0/1     ContainerCreating   0          11s
+pod/nginx-deployment-7df5bf59c4-d7m2d   0/1     ContainerCreating   0          11s
+ ------------------------------------------------------------------------------------------------------------DEPLOYMENT-----------------------------------------------------
+
+NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/nginx-deployment   0/2     2            0           12s
+ ----------------------------------------------------------------------------------------------------------------replicaset-------------------------------------------------
+
+NAME                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/nginx-deployment-7df5bf59c4   2         2         0       12s
