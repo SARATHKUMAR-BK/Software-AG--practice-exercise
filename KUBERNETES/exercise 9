@@ -1,0 +1,28 @@
+#------------------------------------------9) Create a persistent volume claim redis-pvc that claims redis-pv persistent volume
+
+
+#----------------------------------------------------pvc.yaml-----------------------------------------------------------------
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redis-pvc
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+      
+#---------------------------------------------------------------create----------------------------------------
+
+kubectl create -f pvc.yaml
+
+#----------------------------------------------------------------list the persistent volume claim-------------------------
+
+kubectl get pvc redis-pvc
+
+------------------------------------------>OUTPUT
+
+NAME        STATUS   VOLUME     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+redis-pvc   Bound    redis-pv   2Gi        RWO            manual         20m
