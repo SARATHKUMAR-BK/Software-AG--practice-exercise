@@ -1,1 +1,61 @@
 #                  4) Expose port 80 and 6379 of the above created pod such that the application can be connected from the outside world using node's IP address
+
+
+
+#--------------------------------------------------------------pod.yaml---------------------------------------------------
+
+apiVersion: v1
+kind: Pod
+metadata:
+ name: web-server
+ labels: 
+  app: web-server
+spec:
+ containers:
+  - name: nginx-container
+    image: nginx:1.19.10
+    ports:
+        - containerPort: 80
+  - name: redis-container
+    image: redis:6.2.2
+    ports:
+       - containerPort: 6379
+       
+#--------------------------------------------------------------service.yaml---------------------------------------------------
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-server-service
+spec:
+  type: NodePort
+  selector:
+    app: web-server
+  ports:
+  - name: nginx-port
+    protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30037
+  - name: redis-port
+    protocol: TCP
+    port: 6379
+    targetPort: 6379
+    nodePort: 30036
+
+#-----------------------------------------run command-----------------------------------
+kubectl create -f service.yaml 
+
+#--------------------------------------get all service--------------------
+
+kubectl get all
+
+#---------------------------------------------------------------------------------->>>>>>OUTPUT
+
+
+NAME             READY   STATUS    RESTARTS   AGE
+pod/web-server   2/2     Running   0          23m
+
+NAME                         TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)                       AGE
+service/kubernetes           ClusterIP   10.96.0.1     <none>        443/TCP                       27m
+service/web-server-service   NodePort    10.106.9.19   <none>        80:30037/TCP,6379:30036/TCP   7m32s
