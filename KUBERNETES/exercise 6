@@ -1,0 +1,37 @@
+#---------------------------------------6) Change the image of web-deploy to nginx:1.20.0 and record the change-------------------------------
+
+apiVersion: apps/v1       ---------------------->>>Deployment.yaml
+kind: Deployment
+metadata:
+ name: nginx-deployment
+spec:
+ selector:
+  matchLabels:
+    app: nginx
+ replicas: 2
+ template:
+   metadata:
+     labels:
+      app: nginx
+   spec:
+    containers:
+    - name: nginx-container
+      image: nginx:1.19.10
+
+#--------------------------------------------update image -----------------------------------------------------------------------------------
+
+
+kubectl set image deployment.apps/nginx-deployment nginx-container=nginx:1.20.0 --record
+
+----------------------------------------------rollout status---------------------------\
+
+kubectl rollout status deployment.apps/nginx-deployment 
+
+------------------------------------------------rollout history-----------------
+
+kubectl rollout history deployment.apps/nginx-deployment
+
+REVISION  CHANGE-CAUSE
+3         kubectl set image deployment.apps/nginx-deployment nginx=nginx:1.20.0 --record=true
+4         kubectl set image deployment.apps/nginx-deployment nginx-container=nginx:1.20.0 --record=true
+
