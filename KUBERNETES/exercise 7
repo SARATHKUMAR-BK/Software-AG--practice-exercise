@@ -1,0 +1,42 @@
+#                         7) Scale web-deploy to 5 replica
+
+
+apiVersion: apps/v1         ---------------------------------------->deployment.yaml
+kind: Deployment
+metadata:
+ name: nginx-deployment
+spec:
+ selector:
+  matchLabels:
+    app: nginx
+ replicas: 2
+ template:
+   metadata:
+     labels:
+      app: nginx
+   spec:
+    containers:
+    - name: nginx-container
+      image: nginx:1.19.10 
+      
+ ---------------------------------------------------------------------->>BEFORE REPLICAS UOPDATE
+ 
+ NAME                               READY   STATUS    RESTARTS   AGE
+nginx-deployment-b4b4755cf-r4z72   1/1     Running   0          13m
+nginx-deployment-b4b4755cf-spx95   1/1     Running   0          13m
+
+ ---------------------------------------------------------------------->>AFTER REPLICAS UOPDATE
+ 
+kubectl scale --replicas=5 deployment.apps/nginx-deployment
+
+
+------>OUTPUT
+
+NAME                               READY   STATUS    RESTARTS   AGE
+nginx-deployment-b4b4755cf-8mcbs   1/1     Running   0          39s
+nginx-deployment-b4b4755cf-lzmfg   1/1     Running   0          39s
+nginx-deployment-b4b4755cf-r4z72   1/1     Running   0          14m
+nginx-deployment-b4b4755cf-spx95   1/1     Running   0          14m
+nginx-deployment-b4b4755cf-tx6l2   1/1     Running   0          39s
+
+
