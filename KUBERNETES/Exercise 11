@@ -1,0 +1,52 @@
+# ----------------------------------------------------12) Create an Ingress for web-deploy deployment with wildcard hostname
+
+------------------------------------------------------------>deploy.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: web-deploy
+spec:
+ selector:
+  matchLabels:
+    app: nginx
+ replicas: 2
+ template:
+   metadata:
+     labels:
+      app: nginx
+   spec:
+    containers:
+    - name: nginx-container
+      image: nginx:1.19.10 
+      
+ ------------------------------------------------------------> changed to service
+ kubectl expose deployment web-deploy --type=NodePort --port=8088 --name web-deploy-service
+ 
+ -------------------------------------------------------------->ingress.yaml
+ apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web-deploy-ingress
+spec:
+  rules:
+    - host: "*.sarath.com"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web-deploy-service
+                port:
+                  number: 8088
+ ---------------------------------------------------------------->create ingress.yaml
+ 
+ kubectl create -f ingress.yaml
+ 
+ ----------------------------------------------------------------->list the ingress 
+ 
+ kubectl get ingress
+ ------------------------------------------------------------------>Output
+ 
+ NAME                 CLASS    HOSTS          ADDRESS   PORTS   AGE
+web-deploy-ingress   <none>   *.sarath.com             80      11m
