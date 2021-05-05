@@ -1,0 +1,49 @@
+#                                          11) Update the storage size of the redis persistent volume to 3Gi and record the change
+
+
+----------------------------------------->previous pv.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/redis/data"
+    
+    
+ ------------------------------------------------------------------------------------------------------------------------------------------
+ 
+ vi pv.yaml
+ 
+ kubectl apply -f pv.yaml --record
+    
+ -------------------------------------------------------------------------------------UPDATE pv.yaml
+ apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 3Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/redis/data"
+    
+    
+   --------------------------------------------delete pod --------------------------------------
+   kubectl delete pod redis
+   
+   ---------------------------------------------------again create pod-----------------------------
+   
+   kubectl create pod  redis
