@@ -29,7 +29,7 @@ metadata:
   name: web-deploy-ingress
 spec:
   rules:
-    - host: "*.sarath.com"
+    - host: "*"
       http:
         paths:
           - path: /
@@ -49,4 +49,4 @@ spec:
  ------------------------------------------------------------------>Output
  
  NAME                 CLASS    HOSTS          ADDRESS   PORTS   AGE
-web-deploy-ingress   <none>   *.sarath.com             80      11m
+web-deploy-ingress   <none>    *             80      11m
