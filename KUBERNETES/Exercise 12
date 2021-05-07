@@ -29,8 +29,7 @@ metadata:
   name: web-deploy-ingress
 spec:
   rules:
-    - host: "*"
-      http:
+     - http:
         paths:
           - path: /
             pathType: Prefix
